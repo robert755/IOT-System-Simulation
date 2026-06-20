@@ -1,0 +1,14 @@
+# Dependinte Python pentru proiectul IoT SETI
+# Instalare:  pip install -r requirements.txt
+
+paho-mqtt==1.6.1
+pymongo==4.8.0
+python-dotenv
+numpy
+pandas
+flask
+flask-cors
+requests
+streamlit
+plotly
+statsmodels        # necesar pentru trendline OLS in graficul de corelatie

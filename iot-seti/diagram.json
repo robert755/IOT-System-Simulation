@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Proiect IoT SETI",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22",        "id": "dht1",       "top": -120, "left": 200, "attrs": { "temperature": "24", "humidity": "55" } },
+    { "type": "wokwi-potentiometer","id": "pot1",       "top": 40,   "left": 220, "attrs": { "value": "512" } },
+    { "type": "wokwi-led",          "id": "led_status", "top": -60,  "left": -160,"attrs": { "color": "green" } },
+    { "type": "wokwi-led",          "id": "led_fan",    "top": 0,    "left": -160,"attrs": { "color": "blue" } },
+    { "type": "wokwi-led",          "id": "led_alarm",  "top": 60,   "left": -160,"attrs": { "color": "red" } },
+    { "type": "wokwi-led",          "id": "led_pres",   "top": 120,  "left": -160,"attrs": { "color": "yellow" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": -60, "left": -90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 0,   "left": -90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 60,  "left": -90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r4", "top": 120, "left": -90, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:GND.1", "dht1:GND",  "black",  [] ],
+    [ "esp:3V3",   "dht1:VCC",  "red",    [] ],
+    [ "esp:D15",   "dht1:SDA",  "green",  [] ],
+
+    [ "esp:GND.2", "pot1:GND",  "black",  [] ],
+    [ "esp:3V3",   "pot1:VCC",  "red",    [] ],
+    [ "esp:D34",   "pot1:SIG",  "purple", [] ],
+
+    [ "esp:D2",    "r1:1",      "green",  [] ],
+    [ "r1:2",      "led_status:A", "green", [] ],
+    [ "led_status:C", "esp:GND.1", "black", [] ],
+
+    [ "esp:D4",    "r2:1",      "blue",   [] ],
+    [ "r2:2",      "led_fan:A", "blue",   [] ],
+    [ "led_fan:C", "esp:GND.1", "black",  [] ],
+
+    [ "esp:D5",    "r3:1",      "orange", [] ],
+    [ "r3:2",      "led_alarm:A", "orange", [] ],
+    [ "led_alarm:C", "esp:GND.1", "black", [] ],
+
+    [ "esp:D18",   "r4:1",      "gold",   [] ],
+    [ "r4:2",      "led_pres:A", "gold",  [] ],
+    [ "led_pres:C", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}

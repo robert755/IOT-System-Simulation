@@ -1,0 +1,6 @@
+# Biblioteci necesare in Wokwi (fisier libraries.txt).
+# Wokwi le instaleaza automat la rulare.
+PubSubClient
+DHT sensor library
+Adafruit Unified Sensor
+ArduinoJson

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # 1. Procesul care ascultă senzorii (fără porturi, rulează în fundal)
+  procesare:
+    build: .
+    command: python procesare.py
+    env_file:
+      - .env
+    restart: always
+
+  # 2. Serverul API
+  api:
+    build: .
+    command: python api.py
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    restart: always
+
+  # 3. Interfața web Streamlit
+  dashboard:
+    build: .
+    command: streamlit run dashboard.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    restart: always
